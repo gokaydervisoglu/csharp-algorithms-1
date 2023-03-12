@@ -249,3 +249,36 @@ namespace Sort
 
     }
 }
+
+namespace BinarySearch
+{
+    public static class BinarySearchIterative_Class
+    {
+        public static int binarySearch(int[] arr, int x)
+        {
+            int min = 0;
+            int max = arr.Length - 1;
+
+            while (min <= max)
+            {
+                int mid = (min + max) / 2;
+                if (x == arr[mid])
+                {
+                    return 0;
+                }
+                else if (x < arr[mid])
+                {
+                    max = mid - 1;
+                }
+                else
+                {
+                    min = mid + 1;
+                }
+            }
+
+            return -1;
+        }
+
+
+    }
+}
