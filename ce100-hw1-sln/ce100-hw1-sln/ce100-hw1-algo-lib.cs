@@ -130,4 +130,64 @@ namespace Sort
         }
 
     }
+
+    public class QuickSortHoare_Class
+    {
+        public static int partition(int[] arr, int low, int high)
+        {
+            int pivot = arr[low];
+            int i = low - 1, j = high + 1;
+
+            while (true)
+            {
+
+                do
+                {
+                    i++;
+                } while (arr[i] < pivot);
+
+
+                do
+                {
+                    j--;
+                } while (arr[j] > pivot);
+
+
+                if (i >= j)
+                    return j;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+
+            }
+        }
+
+        public static int[] quickSort(int[] arr, int low, int high)
+        {
+            int size = arr.Length;
+
+            int[] result = new int[size];
+
+
+            if (low < high)
+            {
+
+                int pivot = partition(arr, low, high);
+
+                quickSort(arr, low, pivot);
+                quickSort(arr, pivot + 1, high);
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                result[i] = arr[i];
+            }
+
+            return result;
+
+        }
+
+
+
+    }
 }
