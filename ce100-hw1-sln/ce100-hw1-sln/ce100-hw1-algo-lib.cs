@@ -306,3 +306,32 @@ namespace BinarySearch
 
     }
 }
+
+namespace MatrixMultiplication
+{
+    public static class ItarativeMatrix_Class
+    {
+        public static double[,] ItarativeMatrixMultiply(double[,] m1, double[,] m2)
+        {
+
+            double[,] result = new double[m1.GetLength(0), m2.GetLength(1)];
+
+            for (int i = 0; i < m1.GetLength(0); i++)
+            {
+                for (int j = 0; j < m2.GetLength(1); j++)
+                {
+                    double sum = 0;
+
+                    for (int k = 0; k < m1.GetLength(1); k++)
+                    {
+                        sum += m1[i, k] * m2[k, j];
+                    }
+
+                    result[i, j] = sum;
+                }
+            }
+
+            return result;
+        }
+    }
+}
