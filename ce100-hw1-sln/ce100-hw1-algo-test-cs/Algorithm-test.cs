@@ -2,6 +2,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sort;
 using BinarySearch;
 using MatrixMultiplication;
+using MathNet.Numerics.LinearAlgebra;
+
 
 
 namespace SelectionSort_TestClass
@@ -693,6 +695,192 @@ namespace BinarySearchRecursive_TestClass
             int result = BinarySearchRecursive_Class.binarySearch(data2, 0, size - 1, number);
 
             Assert.AreEqual(expected, result);
+
+        }
+
+    }
+}
+
+namespace Matrix_TestClass
+{
+    /// <summary>
+    /// The accuracy of the multiplications of the matrices prepared here has been tested with a ready-made library and matrix function.
+    /// </summary>
+
+    [TestClass]
+    public class ItarativeMatrix_TestClass
+    {
+        [TestMethod]
+        public void ItarativeMatrixTest()
+        {
+            int i, j;
+
+            Random random = new Random();
+            double[,] m1 = new double[10, 10];
+            double[,] m2 = new double[10, 10];
+
+            int size = 10;
+
+            for (i = 1; i < size; i++)
+            {
+                for (j = 1; j < size; j++)
+                {
+                    m1[i, j] = random.Next(0, 10);
+                }
+
+            }
+            for (i = 1; i < size; i++)
+            {
+                for (j = 1; j < size; j++)
+                {
+                    m2[i, j] = random.Next(0, 10);
+                }
+            }
+
+            double[,] result = ItarativeMatrix_Class.ItarativeMatrixMultiply(m1, m2);
+
+            Matrix<double> max1 = Matrix<double>.Build.DenseOfArray(m1);
+            Matrix<double> max2 = Matrix<double>.Build.DenseOfArray(m2);
+            Matrix<double> expected = max1 * max2;
+
+
+            double[,] expectedArray = expected.ToArray();
+
+            CollectionAssert.AreEqual(expectedArray, result);
+
+        }
+
+    }
+
+    /// <summary>
+    /// The accuracy of the multiplications of the matrices prepared here has been tested with a ready-made library and matrix function.
+    /// </summary>
+
+    [TestClass]
+    public class RecursiveMatrix_TestClass
+    {
+        [TestMethod]
+        public void RecMatrixTest()
+        {
+            int i, j;
+
+            Random random = new Random();
+            int[,] m1 = new int[10, 10];
+            int[,] m2 = new int[10, 10];
+
+
+            int size = 10;
+
+            for (i = 1; i < size; i++)
+            {
+                for (j = 1; j < size; j++)
+                {
+                    m1[i, j] = random.Next(0, 10);
+                }
+
+            }
+            for (i = 1; i < size; i++)
+            {
+                for (j = 1; j < size; j++)
+                {
+                    m2[i, j] = random.Next(0, 10);
+                }
+            }
+
+            int r1 = m1.GetLength(0);
+            int c1 = m1.GetLength(1);
+
+            int r2 = m2.GetLength(0);
+            int c2 = m2.GetLength(1);
+
+
+            int[,] result = RecursiveMatrix_Class.RecursiveMatrixMultiply(m1, m2, r1, c2);
+
+            int[,] expectedArray = new int[m1.GetLength(0), m2.GetLength(1)];
+
+            for (i = 0; i < size; i++)
+            {
+                for (j = 0; j < size; j++)
+                {
+                    int sum = 0;
+
+                    for (int k = 0; k < size; k++)
+                    {
+                        sum += m1[i, k] * m2[k, j];
+                    }
+
+                    expectedArray[i, j] = sum;
+                }
+            }
+
+            CollectionAssert.AreEqual(expectedArray, result);
+
+        }
+
+    }
+
+    /// <summary>
+    /// The accuracy of the multiplications of the matrices prepared here has been tested with a ready-made library and matrix function.
+    /// </summary>
+
+    [TestClass]
+    public class StrassenMatrix_TestClass
+    {
+        [TestMethod]
+        public void StrassenMatrixTest()
+        {
+            int i, j;
+
+            int size = 8;
+
+            Random random = new Random();
+            int[,] m1 = new int[size, size];
+            int[,] m2 = new int[size, size];
+
+
+            for (i = 1; i < size; i++)
+            {
+                for (j = 1; j < size; j++)
+                {
+                    m1[i, j] = random.Next(0, 10);
+                }
+
+            }
+            for (i = 1; i < size; i++)
+            {
+                for (j = 1; j < size; j++)
+                {
+                    m2[i, j] = random.Next(0, 10);
+                }
+            }
+
+            int r1 = m1.GetLength(0);
+            int c1 = m1.GetLength(1);
+
+            int r2 = m2.GetLength(0);
+            int c2 = m2.GetLength(1);
+
+
+            int[,] result = StrassenMatrix_Class.StrassenMatrixMultiply(m1, m2);
+
+            int[,] expectedArray = new int[m1.GetLength(0), m2.GetLength(1)];
+
+            for (i = 0; i < size; i++)
+            {
+                for (j = 0; j < size; j++)
+                {
+                    int sum = 0;
+
+                    for (int k = 0; k < size; k++)
+                    {
+                        sum += m1[i, k] * m2[k, j];
+                    }
+
+                    expectedArray[i, j] = sum;
+                }
+            }
+
+            CollectionAssert.AreEqual(expectedArray, result);
 
         }
 
