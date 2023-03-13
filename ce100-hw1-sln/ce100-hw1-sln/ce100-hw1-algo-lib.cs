@@ -519,13 +519,23 @@ namespace MatrixMultiplication
 
     public static class StrassenMatrix_Class
     {
+        /// <summary>
+        /// Strassen Matrix Multiplication is more complex than other methods, 
+        /// it multiplies very large matrices faster than others thanks to its long operations.
+        /// In general, the Strassen function divides the initial matrix A and B into very small matrices and performs multiplication and addition operations between them.
+        /// The performance of the function is slower on small inputs.
+        /// Then it is transferred to the C matrix by combining the divided matrices.
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
 
         public static int[,] StrassenMatrixMultiply(int[,] m1, int[,] m2)
         {
-
+            // r = row
             int r = m1.GetLength(0);
 
-
+            // Create the result matrix
             int[,] result = new int[r, r];
 
 
@@ -536,7 +546,7 @@ namespace MatrixMultiplication
 
             else
             {
-
+                // Split matrices into submatrices
                 int newSize = r / 2;
 
                 int[,] split111 = new int[newSize, newSize];
@@ -559,7 +569,7 @@ namespace MatrixMultiplication
                 Divide(m2, split221, newSize, 0);
                 Divide(m2, split222, newSize, newSize);
 
-
+                // Calculate P1-P7 submatrices
                 int[,] p1 = StrassenMatrixMultiply(Add(split111, split122), Add(split211, split222));
                 int[,] p2 = StrassenMatrixMultiply(Add(split121, split122), split211);
                 int[,] p3 = StrassenMatrixMultiply(split111, untract(split212, split222));
@@ -568,13 +578,13 @@ namespace MatrixMultiplication
                 int[,] p6 = StrassenMatrixMultiply(untract(split121, split111), Add(split211, split212));
                 int[,] p7 = StrassenMatrixMultiply(untract(split112, split122), Add(split221, split222));
 
-
+                // Multiplication of submatrices
                 int[,] unresult11 = Add(untract(Add(p1, p4), p5), p7);
                 int[,] unresult12 = Add(p3, p5);
                 int[,] unresult21 = Add(p2, p4);
                 int[,] unresult22 = Add(untract(Add(p1, p3), p2), p6);
 
-
+                // Merge result matrix from submatrices
                 Merge(unresult11, result, 0, 0);
                 Merge(unresult12, result, 0, newSize);
                 Merge(unresult21, result, newSize, 0);
