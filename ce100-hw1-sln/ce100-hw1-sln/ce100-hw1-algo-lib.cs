@@ -412,6 +412,14 @@ namespace MatrixMultiplication
 {
     public static class ItarativeMatrix_Class
     {
+        /// <summary>
+        /// Iterative Matrix Multiplication is simpler than other methods, so the more inputs, the more difficult it is.
+        ///With simple logic, it multiplies and multiplies the row columns of the two matrixes in the form of a loop and is transferred to the newly created matrix at the same level.
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
+        
         public static double[,] ItarativeMatrixMultiply(double[,] m1, double[,] m2)
         {
 
