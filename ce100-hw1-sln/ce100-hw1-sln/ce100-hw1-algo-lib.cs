@@ -446,7 +446,16 @@ namespace MatrixMultiplication
 
     public static class RecursiveMatrix_Class
     {
-
+        /// <summary>
+        /// Recursive Matrix Multiplication is more useful than other methods, so it can perform loaded operations faster.
+        /// Initially, it takes the A and B matrix values, and also the C matrix to be transferred.Thanks to the initial i, j, k values, it breaks the matrices and multiplies them faster.
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <param name="C"></param>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        /// <param name="k"></param>
         public static void MultiplyMatrix(int[,] A, int[,] B, int[,] C, int i, int j, int k)
         {
             int r1 = A.GetLength(0);
@@ -476,6 +485,16 @@ namespace MatrixMultiplication
                 MultiplyMatrix(A, B, C, i + 1, 0, 0);
             }
         }
+
+        /// <summary>
+        /// At this stage, the product value of the matrices is transferred to the newly created C matrix. 
+        /// In addition, the C matrix is cleaned from the beginning with the loop in order to prevent errors.
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <param name="r1"></param>
+        /// <param name="c2"></param>
+        /// <returns></returns>
 
         public static int[,] RecursiveMatrixMultiply(int[,] A, int[,] B, int r1, int c2)
         {
