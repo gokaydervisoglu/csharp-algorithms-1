@@ -334,4 +334,58 @@ namespace MatrixMultiplication
             return result;
         }
     }
+
+    public static class RecursiveMatrix_Class
+    {
+
+        public static void MultiplyMatrix(int[,] A, int[,] B, int[,] C, int i, int j, int k)
+        {
+            int r1 = A.GetLength(0);
+            int c1 = A.GetLength(1);
+
+            int r2 = B.GetLength(0);
+            int c2 = B.GetLength(1);
+
+            if (i >= r1)
+            {
+                return;
+            }
+
+            if (j < c2)
+            {
+                int sum = 0;
+                for (k = 0; k < c1; k++)
+                {
+                    sum += A[i, k] * B[k, j];
+                }
+                C[i, j] = sum;
+
+                MultiplyMatrix(A, B, C, i, j + 1, 0);
+            }
+            else
+            {
+                MultiplyMatrix(A, B, C, i + 1, 0, 0);
+            }
+        }
+
+        public static int[,] RecursiveMatrixMultiply(int[,] A, int[,] B, int r1, int c2)
+        {
+
+            int[,] C = new int[r1, c2];
+
+
+            for (int i = 0; i < r1; i++)
+            {
+                for (int j = 0; j < c2; j++)
+                {
+                    C[i, j] = 0;
+                }
+            }
+
+            MultiplyMatrix(A, B, C, 0, 0, 0);
+
+            return C;
+        }
+
+    }
 }
