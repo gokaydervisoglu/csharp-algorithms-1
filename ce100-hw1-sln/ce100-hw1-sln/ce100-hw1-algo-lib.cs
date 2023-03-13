@@ -335,6 +335,16 @@ namespace BinarySearch
 {
     public static class BinarySearchIterative_Class
     {
+        /// <summary>
+        /// The algorithm divides the range in the middle 
+        /// and halves it to the left or right depending on 
+        /// whether the searched item is less than or greater 
+        /// than the middle item. This process is repeated until 
+        /// the searched item is found or the range is exhausted.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public static int binarySearch(int[] arr, int x)
         {
             int min = 0;
@@ -365,7 +375,17 @@ namespace BinarySearch
 
     public static class BinarySearchRecursive_Class
     {
-     
+        /// <summary>
+        /// The algorithm divides the range in the middle and halves it 
+        /// to the left or right depending on whether the searched item 
+        /// is less than or greater than the middle item. This process is 
+        /// repeated until the searched item is found or the range is exhausted.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public static int binarySearch(int[] arr, int left, int right, int x)
         {
             if (right >= left)
