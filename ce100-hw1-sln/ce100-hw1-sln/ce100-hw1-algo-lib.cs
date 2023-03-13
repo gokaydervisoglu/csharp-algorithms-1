@@ -9,6 +9,12 @@ namespace Sort
     public class SelectionSort_Class
     {
 
+        /// <summary>
+        /// Thanks to this function, it serves to replace the elements determined in the number sequence with the bridge operation.
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
         public static void replace(ref int first, ref int second)
         {
             int r = first;
@@ -17,6 +23,15 @@ namespace Sort
             second = r;
         }
 
+        /// <summary>
+        /// Selection Sort Method to sort a mixed array.
+        /// Initially it tries to make the first row element the smallest element of the string.
+        /// As usage, it finds the smallest number of the string and puts it first in order.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        
         public static int[] Selectionsort(int[] row, int size)
         {
             int[] result = new int[size];
