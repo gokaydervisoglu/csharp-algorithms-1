@@ -14,7 +14,7 @@ namespace Sort
         /// </summary>
         /// <param name="first"></param>
         /// <param name="second"></param>
-        /// <returns></returns>
+        
         public static void replace(ref int first, ref int second)
         {
             int r = first;
@@ -64,7 +64,14 @@ namespace Sort
     {
         public static void merge(int[] arr, int p, int q, int r)
         {
-
+            /// <summary>
+            /// Thanks to this function, it is also indicated in the complexity of the strings that are divided in the number sequence, 
+            /// from n to n/2, to combine them again.
+            /// </summary>
+            /// <param name="arr"></param>
+            /// <param name="p"></param>
+            /// <param name="q"></param>
+            /// <param name="r"></param>
 
             int n1 = q - p + 1;
             int n2 = r - q;
@@ -117,7 +124,15 @@ namespace Sort
 
         }
 
-      
+        /// <summary>
+        /// The Merge Sort function generally follows the divide-and-conquer method, so it easily sorts tangled large strings neatly.
+        /// When we look at the parameters, 
+        /// we first determine the middle of the string with the parameters including the beginning and the end of the string to separate n/2 from n.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="l"></param>
+        /// <param name="r"></param>
+        /// <returns></returns>
 
         public static int[] mergeSort(int[] row, int l, int r)
         {
