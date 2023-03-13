@@ -232,3 +232,225 @@ namespace MergeSort_TestClass
         }
     }
 }
+
+namespace QuickShortHoare_TestClass
+{
+
+    //QuickShort-Hoare
+
+    /// <summary>
+    /// The purpose of the test here is to sort a nearly complete array and see the best method.
+    /// </summary>
+
+    [TestClass]
+    public class BestQuickSortHoareTests
+    {
+        [TestMethod]
+        public void TestQuickSortHoareMethod()
+        {
+            int size;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+            Array.Sort(data);
+
+            Random random2 = new Random();
+            for (int i = 5000; i < data.Length - 4000; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            size = data.Length;
+
+            int[] result = QuickSortHoare_Class.quickSort(data, 0, size - 1);
+
+            int[] expected = (int[])data.Clone();
+            Array.Sort(expected);
+
+            CollectionAssert.AreEqual(expected, result);
+
+        }
+    }
+
+    /// <summary>
+    /// Our goal here is to correctly sort a randomly sorted string, to see the average method here.
+    /// </summary>
+
+    [TestClass]
+    public class AverageQuickSortHoareTests
+    {
+        [TestMethod]
+        public void TestQuickSortHoareMethod()
+        {
+            int size;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            size = data.Length;
+
+            int[] result = QuickSortHoare_Class.quickSort(data, 0, size - 1);
+
+            int[] expected = (int[])data.Clone();
+            Array.Sort(expected);
+
+            CollectionAssert.AreEqual(expected, result);
+
+        }
+    }
+
+    /// <summary>
+    /// Our goal here is to correctly sort a reverse sorted string, to see the worst method here.
+    /// </summary>
+
+    [TestClass]
+    public class WorstQuickSortHoareTests
+    {
+        [TestMethod]
+        public void TestQuickSortHoareMethod()
+        {
+            int size;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+            Array.Sort(data);
+            Array.Reverse(data);
+
+            size = data.Length;
+
+            int[] result = QuickSortHoare_Class.quickSort(data, 0, size - 1);
+
+            int[] expected = (int[])data.Clone();
+            Array.Sort(expected);
+
+            CollectionAssert.AreEqual(expected, result);
+
+        }
+    }
+
+}
+
+namespace QuickShortLomuto_TestClass
+{
+    //QuickShort-Lomuto
+
+    /// <summary>
+    /// The purpose of the test here is to sort a nearly complete array and see the best method.
+    /// </summary>
+
+    [TestClass]
+    public class BestQuickSortLomutoTests
+    {
+        [TestMethod]
+        public void TestQuickSortLomutoMethod()
+        {
+            int size;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+            Array.Sort(data);
+
+            Random random2 = new Random();
+            for (int i = 5000; i < data.Length - 4000; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            size = data.Length;
+
+            int[] result = QuickSortLomuto_Class.quickSort(data, 0, size - 1);
+
+            int[] expected = (int[])data.Clone();
+            Array.Sort(expected);
+
+            CollectionAssert.AreEqual(expected, result);
+
+        }
+    }
+
+    /// <summary>
+    /// Our goal here is to correctly sort a randomly sorted string, to see the average method here.
+    /// </summary>
+
+    [TestClass]
+    public class AverageQuickSortLomutoTests
+    {
+        [TestMethod]
+        public void TestQuickSortLomutoMethod()
+        {
+            int size;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            size = data.Length;
+
+            int[] result = QuickSortLomuto_Class.quickSort(data, 0, size - 1);
+
+            int[] expected = (int[])data.Clone();
+            Array.Sort(expected);
+
+            CollectionAssert.AreEqual(expected, result);
+
+        }
+    }
+
+    /// <summary>
+    /// Our goal here is to correctly sort a reverse sorted string, to see the worst method here.
+    /// </summary>
+
+    [TestClass]
+    public class WorstQuickSortLomutoTests
+    {
+        [TestMethod]
+        public void TestQuickSortLomutoMethod()
+        {
+            int size;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+            Array.Sort(data);
+            Array.Reverse(data);
+
+            size = data.Length;
+
+            int[] result = QuickSortLomuto_Class.quickSort(data, 0, size - 1);
+
+            int[] expected = (int[])data.Clone();
+            Array.Sort(expected);
+
+            CollectionAssert.AreEqual(expected, result);
+
+        }
+    }
+}
