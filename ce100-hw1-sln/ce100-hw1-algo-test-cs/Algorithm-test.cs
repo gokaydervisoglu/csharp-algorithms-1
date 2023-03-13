@@ -454,3 +454,247 @@ namespace QuickShortLomuto_TestClass
         }
     }
 }
+
+namespace BinarySearchIterative_TestClass
+{
+    /// <summary>
+    /// For the best scenario, we determined the
+    /// number to be searched directly as the middle
+    /// element of the string.
+    /// </summary>
+    [TestClass]
+    public class BestbinarySearchIterativeTests
+    {
+        [TestMethod]
+        public void TestIterativeMethod()
+        {
+            int size;
+            int expected = 0;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            //Random randomx = new Random();
+            //int number = randomx.Next(1, 10);
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            Random random2 = new Random();
+
+            size = data.Length;
+
+            int[] data2 = (int[])data.Clone();
+            Array.Sort(data2);
+
+            int number = data2[5000];
+
+            int result = BinarySearchIterative_Class.binarySearch(data2, number);
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+    }
+    /// <summary>
+    /// For the average scenario, we determined the
+    /// number to be searched as any random element
+    /// of the string.
+    /// </summary>
+    [TestClass]
+    public class AveragebinarySearchIterativeTests
+    {
+        [TestMethod]
+        public void TestIterativeMethod()
+        {
+            int size;
+            int expected = 0;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            //random number
+            //Random randomx = new Random();
+            //int number = randomx.Next(1, 5000);
+
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            Random numberx = new Random();
+            int j = numberx.Next(1, 10000);
+
+            size = data.Length;
+
+            int[] data2 = (int[])data.Clone();
+            Array.Sort(data2);
+
+            int number = data2[j];
+
+            int result = BinarySearchIterative_Class.binarySearch(data2, number);
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+    }
+    /// <summary>
+    /// For the worst case scenario, we determined the
+    /// number to be searched as a number that is not
+    /// in the array.
+    /// </summary>
+    [TestClass]
+    public class WorstbinarySearchIterativeTests
+    {
+        [TestMethod]
+        public void TestIterativeMethod()
+        {
+            int size;
+            int expected = -1;
+            // en kotu senaryo belilenen deger yoktur
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            size = data.Length;
+
+            int[] data2 = (int[])data.Clone();
+            Array.Sort(data2);
+
+            //int number = data2[9999];
+
+            int number = 10001;
+
+            int result = BinarySearchIterative_Class.binarySearch(data2, number);
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+    }
+
+}
+
+namespace BinarySearchRecursive_TestClass
+{
+    /// <summary>
+    /// For the best scenario, we determined the
+    /// number to be searched directly as the middle
+    /// element of the string.
+    /// </summary>
+    [TestClass]
+    public class BestBinarySearchRecursiveTest
+    {
+        [TestMethod]
+        public void TestRecursiveMethod()
+        {
+            int size;
+            int expected = 0;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            size = data.Length;
+
+            int[] data2 = (int[])data.Clone();
+            Array.Sort(data2);
+
+            int number = data2[5000];
+
+            int result = BinarySearchRecursive_Class.binarySearch(data2, 0, size - 1, number);
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+    }
+    /// <summary>
+    /// For the average scenario, we determined the
+    /// number to be searched as any random element
+    /// of the string.
+    /// </summary>
+    [TestClass]
+    public class AvarageBinarySearchRecursiveTest
+    {
+        [TestMethod]
+        public void TestRecursiveMethod()
+        {
+            int size;
+            int expected = 0;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            Random numberx = new Random();
+            int j = numberx.Next(1, 10000);
+
+            size = data.Length;
+
+            int[] data2 = (int[])data.Clone();
+            Array.Sort(data2);
+
+            int number = data2[j];
+
+            int result = BinarySearchRecursive_Class.binarySearch(data2, 0, size - 1, number);
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+    }
+    /// <summary>
+    /// For the worst case scenario, we determined the
+    /// number to be searched as a number that is not
+    /// in the array.
+    /// </summary>
+    [TestClass]
+    public class WorstBinarySearchRecursiveTest
+    {
+        [TestMethod]
+        public void TestRecursiveMethod()
+        {
+            int size;
+            int expected = 0;
+
+            int[] data = new int[10000];
+            Random random = new Random();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = random.Next(0, 10000);
+            }
+
+            size = data.Length;
+
+            int[] data2 = (int[])data.Clone();
+            Array.Sort(data2);
+
+            int number = data2[7500];
+
+            int result = BinarySearchRecursive_Class.binarySearch(data2, 0, size - 1, number);
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+    }
+}
