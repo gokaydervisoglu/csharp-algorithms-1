@@ -593,7 +593,13 @@ namespace MatrixMultiplication
 
             return result;
         }
-     
+        /// <summary>
+        /// The add function adds each element of both 
+        /// matrices and creates a new matrix as a result.
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
         public static int[,] Add(int[,] m1, int[,] m2)
         {
             int n = m1.GetLength(0);
@@ -609,7 +615,13 @@ namespace MatrixMultiplication
 
             return result;
         }
-       
+        /// <summary>
+        /// The Untract function extracts each element of 
+        /// both matrices and creates a new matrix as a result.
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
         public static int[,] untract(int[,] m1, int[,] m2)
         {
             int r = m1.GetLength(0);
@@ -625,7 +637,14 @@ namespace MatrixMultiplication
 
             return result;
         }
-      
+        /// <summary>
+        /// If the matrix size is n > 2, the matrices are
+        /// divided into four equally sized submatrices.
+        /// </summary>
+        /// <param name="MainMatrix"></param>
+        /// <param name="OtherMatrix"></param>
+        /// <param name="rStart"></param>
+        /// <param name="cStart"></param>
         public static void Divide(int[,] MainMatrix, int[,] OtherMatrix, int rStart, int cStart)
         {
             for (int i = 0, i2 = rStart; i < OtherMatrix.GetLength(0); i++, i2++)
@@ -636,7 +655,15 @@ namespace MatrixMultiplication
                 }
             }
         }
-       
+        /// <summary>
+        /// Using the Merge function, the results of the 
+        /// submatrices are combined and the original matrix 
+        /// is obtained.
+        /// </summary>
+        /// <param name="OtherMatrix"></param>
+        /// <param name="MainMatrix"></param>
+        /// <param name="rStart"></param>
+        /// <param name="cStart"></param>
         public static void Merge(int[,] OtherMatrix, int[,] MainMatrix, int rStart, int cStart)
         {
             for (int i = 0, i2 = rStart; i < OtherMatrix.GetLength(0); i++, i2++)
