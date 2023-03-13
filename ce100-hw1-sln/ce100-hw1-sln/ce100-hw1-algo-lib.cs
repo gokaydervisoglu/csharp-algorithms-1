@@ -388,4 +388,127 @@ namespace MatrixMultiplication
         }
 
     }
+
+    public static class StrassenMatrix_Class
+    {
+
+        public static int[,] StrassenMatrixMultiply(int[,] m1, int[,] m2)
+        {
+
+            int r = m1.GetLength(0);
+
+
+            int[,] result = new int[r, r];
+
+
+            if (r == 1)
+            {
+                result[0, 0] = m1[0, 0] * m2[0, 0];
+            }
+
+            else
+            {
+
+                int newSize = r / 2;
+
+                int[,] split111 = new int[newSize, newSize];
+                int[,] split112 = new int[newSize, newSize];
+                int[,] split121 = new int[newSize, newSize];
+                int[,] split122 = new int[newSize, newSize];
+
+                int[,] split211 = new int[newSize, newSize];
+                int[,] split212 = new int[newSize, newSize];
+                int[,] split221 = new int[newSize, newSize];
+                int[,] split222 = new int[newSize, newSize];
+
+                Divide(m1, split111, 0, 0);
+                Divide(m1, split112, 0, newSize);
+                Divide(m1, split121, newSize, 0);
+                Divide(m1, split122, newSize, newSize);
+
+                Divide(m2, split211, 0, 0);
+                Divide(m2, split212, 0, newSize);
+                Divide(m2, split221, newSize, 0);
+                Divide(m2, split222, newSize, newSize);
+
+
+                int[,] p1 = StrassenMatrixMultiply(Add(split111, split122), Add(split211, split222));
+                int[,] p2 = StrassenMatrixMultiply(Add(split121, split122), split211);
+                int[,] p3 = StrassenMatrixMultiply(split111, untract(split212, split222));
+                int[,] p4 = StrassenMatrixMultiply(split122, untract(split221, split211));
+                int[,] p5 = StrassenMatrixMultiply(Add(split111, split112), split222);
+                int[,] p6 = StrassenMatrixMultiply(untract(split121, split111), Add(split211, split212));
+                int[,] p7 = StrassenMatrixMultiply(untract(split112, split122), Add(split221, split222));
+
+
+                int[,] unresult11 = Add(untract(Add(p1, p4), p5), p7);
+                int[,] unresult12 = Add(p3, p5);
+                int[,] unresult21 = Add(p2, p4);
+                int[,] unresult22 = Add(untract(Add(p1, p3), p2), p6);
+
+
+                Merge(unresult11, result, 0, 0);
+                Merge(unresult12, result, 0, newSize);
+                Merge(unresult21, result, newSize, 0);
+                Merge(unresult22, result, newSize, newSize);
+            }
+
+            return result;
+        }
+     
+        public static int[,] Add(int[,] m1, int[,] m2)
+        {
+            int n = m1.GetLength(0);
+            int[,] result = new int[n, n];
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    result[i, j] = m1[i, j] + m2[i, j];
+                }
+            }
+
+            return result;
+        }
+       
+        public static int[,] untract(int[,] m1, int[,] m2)
+        {
+            int r = m1.GetLength(0);
+            int[,] result = new int[r, r];
+
+            for (int i = 0; i < r; i++)
+            {
+                for (int j = 0; j < r; j++)
+                {
+                    result[i, j] = m1[i, j] - m2[i, j];
+                }
+            }
+
+            return result;
+        }
+      
+        public static void Divide(int[,] MainMatrix, int[,] OtherMatrix, int rStart, int cStart)
+        {
+            for (int i = 0, i2 = rStart; i < OtherMatrix.GetLength(0); i++, i2++)
+            {
+                for (int j = 0, j2 = cStart; j < OtherMatrix.GetLength(1); j++, j2++)
+                {
+                    OtherMatrix[i, j] = MainMatrix[i2, j2];
+                }
+            }
+        }
+       
+        public static void Merge(int[,] OtherMatrix, int[,] MainMatrix, int rStart, int cStart)
+        {
+            for (int i = 0, i2 = rStart; i < OtherMatrix.GetLength(0); i++, i2++)
+            {
+                for (int j = 0, j2 = cStart; j < OtherMatrix.GetLength(1); j++, j2++)
+                {
+                    MainMatrix[i2, j2] = OtherMatrix[i, j];
+                }
+            }
+        }
+
+    }
 }
