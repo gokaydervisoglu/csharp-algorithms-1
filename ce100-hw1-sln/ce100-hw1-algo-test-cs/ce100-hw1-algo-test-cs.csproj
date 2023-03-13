@@ -16,4 +16,8 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ce100-hw1-sln\ce100-hw1-algo-lib-cs.csproj" />
+  </ItemGroup>
+
 </Project>
