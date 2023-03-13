@@ -10,7 +10,8 @@ namespace Sort
     {
 
         /// <summary>
-        /// Thanks to this function, it serves to replace the elements determined in the number sequence with the bridge operation.
+        /// Thanks to this function, it serves to replace the elements 
+        /// determined in the number sequence with the bridge operation.
         /// </summary>
         /// <param name="first"></param>
         /// <param name="second"></param>
@@ -25,8 +26,10 @@ namespace Sort
 
         /// <summary>
         /// Selection Sort Method to sort a mixed array.
-        /// Initially it tries to make the first row element the smallest element of the string.
-        /// As usage, it finds the smallest number of the string and puts it first in order.
+        /// Initially it tries to make the first row element the 
+        /// smallest element of the string.
+        /// As usage, it finds the smallest number of the string 
+        /// and puts it first in order.
         /// </summary>
         /// <param name="row"></param>
         /// <param name="size"></param>
@@ -59,20 +62,22 @@ namespace Sort
         }
 
     }
-
+    
     public class MergeSort_Class
     {
+        /// <summary>
+        /// Thanks to this function, it is also indicated in 
+        /// the complexity of the strings that are divided 
+        /// in the number sequence, 
+        /// from n to n/2, to combine them again.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="p"></param>
+        /// <param name="q"></param>
+        /// <param name="r"></param>
         public static void merge(int[] arr, int p, int q, int r)
         {
-            /// <summary>
-            /// Thanks to this function, it is also indicated in the complexity of the strings that are divided in the number sequence, 
-            /// from n to n/2, to combine them again.
-            /// </summary>
-            /// <param name="arr"></param>
-            /// <param name="p"></param>
-            /// <param name="q"></param>
-            /// <param name="r"></param>
-
+            
             int n1 = q - p + 1;
             int n2 = r - q;
 
@@ -163,6 +168,18 @@ namespace Sort
 
     public class QuickSortHoare_Class
     {
+        /// <summary>
+        /// The partition method performs an operation that divides 
+        /// the array elements into two groups based on a particular element. 
+        /// Here, the first element on the left is selected as the pivot. 
+        /// Next, the elements on the left and right sides are scanned 
+        /// sequentially and swapped according to the pivot value. This 
+        /// will center the array and return the pivot index.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="low"></param>
+        /// <param name="high"></param>
+        /// <returns></returns>
         public static int partition(int[] arr, int low, int high)
         {
             int pivot = arr[low];
@@ -191,7 +208,16 @@ namespace Sort
 
             }
         }
-
+        /// <summary>
+        /// In the QuickSort method, an element in the middle of 
+        /// the array is selected and the smaller ones are placed 
+        /// on the left and the larger ones on the right. Then the 
+        /// QuickSort method is called again for each substring.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="low"></param>
+        /// <param name="high"></param>
+        /// <returns></returns>
         public static int[] quickSort(int[] arr, int low, int high)
         {
             int size = arr.Length;
@@ -223,7 +249,12 @@ namespace Sort
 
     public static class QuickSortLomuto_Class
     {
-        
+        /// <summary>
+        /// Swap method swaps two elements.
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
         public static void swap(int[] array, int i, int j)
         {
 
@@ -233,7 +264,18 @@ namespace Sort
 
             array[j] = temp;
         }
-      
+        /// <summary>
+        /// The partition method performs an operation that divides 
+        /// the array elements into two groups based on a particular element. 
+        /// Here, the last element on the right is selected as the pivot. 
+        /// Then the left and right side elements are scanned sequentially 
+        /// and swapped according to the pivot value. This will center the 
+        /// array and return the pivot index.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="low"></param>
+        /// <param name="high"></param>
+        /// <returns></returns>
         public static int partition(int[] arr, int low, int high)
         {
             int pivot = arr[high];
@@ -252,7 +294,16 @@ namespace Sort
             swap(arr, i + 1, high);
             return (i + 1);
         }
-     
+        /// <summary>
+        /// The QuickSort method selects an element in the middle 
+        /// of the array and places the smaller ones on the left 
+        /// and the larger ones on the right. Then the QuickSort 
+        /// method is called again for each substring.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="low"></param>
+        /// <param name="high"></param>
+        /// <returns></returns>
         public static int[] quickSort(int[] arr, int low, int high)
 
         {
