@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sort;
 using BinarySearch;
 using MatrixMultiplication;
+using MasterTheroem;
 using MathNet.Numerics.LinearAlgebra;
 
 
@@ -476,9 +477,6 @@ namespace BinarySearchIterative_TestClass
             int[] data = new int[10000];
             Random random = new Random();
 
-            //Random randomx = new Random();
-            //int number = randomx.Next(1, 10);
-
             for (int i = 0; i < data.Length; i++)
             {
                 data[i] = random.Next(0, 10000);
@@ -517,11 +515,6 @@ namespace BinarySearchIterative_TestClass
             int[] data = new int[10000];
             Random random = new Random();
 
-            //random number
-            //Random randomx = new Random();
-            //int number = randomx.Next(1, 5000);
-
-
             for (int i = 0; i < data.Length; i++)
             {
                 data[i] = random.Next(0, 10000);
@@ -557,7 +550,7 @@ namespace BinarySearchIterative_TestClass
         {
             int size;
             int expected = -1;
-            // en kotu senaryo belilenen deger yoktur
+            // worst-case scenario no value specified
 
             int[] data = new int[10000];
             Random random = new Random();
@@ -571,8 +564,6 @@ namespace BinarySearchIterative_TestClass
 
             int[] data2 = (int[])data.Clone();
             Array.Sort(data2);
-
-            //int number = data2[9999];
 
             int number = 10001;
 
@@ -881,6 +872,30 @@ namespace Matrix_TestClass
             }
 
             CollectionAssert.AreEqual(expectedArray, result);
+
+        }
+
+    }
+}
+
+namespace MasterTheorem_TestClass
+{
+    [TestClass]
+    public class MasterTheoremTests
+    {
+        /// <summary>
+        /// Here, with the master theorem, the time complexity of 
+        /// the functions in the assignment was tested according to the scenarios, 
+        /// and the unit tests were verified according to the accuracy of the results equations.
+        /// </summary>
+
+        [TestMethod]
+        public void MasterTheoremTest3()
+        {
+            Assert.AreEqual("O(n log n)", MasterTheorem.TimeComplexity(2, 2, 1)); //merge sort Average,Best,Worst
+            Assert.AreEqual("O(1)", MasterTheorem.TimeComplexity(1, 2, 1)); //Binary Best 
+            Assert.AreEqual("O(n log n)", MasterTheorem.TimeComplexity(2, 2, 1)); // Binary Average,Worst 
+            Assert.AreEqual("O(n log n)", MasterTheorem.TimeComplexity(2, 2, 1)); // Quick sort Average,Best
 
         }
 

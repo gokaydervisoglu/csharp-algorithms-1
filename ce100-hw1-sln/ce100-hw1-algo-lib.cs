@@ -75,6 +75,8 @@ namespace Sort
         /// <param name="p"></param>
         /// <param name="q"></param>
         /// <param name="r"></param>
+        
+
         public static void merge(int[] arr, int p, int q, int r)
         {
             
@@ -139,6 +141,10 @@ namespace Sort
         /// <param name="r"></param>
         /// <returns></returns>
 
+        /**
+        * T(n) = 2T(n/2) + O(n) Average,Best,Worst
+        */
+
         public static int[] mergeSort(int[] row, int l, int r)
         {
             int size = row.Length;
@@ -180,6 +186,12 @@ namespace Sort
         /// <param name="low"></param>
         /// <param name="high"></param>
         /// <returns></returns>
+        
+        /**
+         * T(n) = T(n-1) + O(n) Worst
+         * T(n) = 2T(n/2) + O(n) Average,Best
+         */
+
         public static int partition(int[] arr, int low, int high)
         {
             int pivot = arr[low];
@@ -247,6 +259,8 @@ namespace Sort
 
     }
 
+
+
     public static class QuickSortLomuto_Class
     {
         /// <summary>
@@ -255,6 +269,9 @@ namespace Sort
         /// <param name="array"></param>
         /// <param name="i"></param>
         /// <param name="j"></param>
+        /// 
+
+
         public static void swap(int[] array, int i, int j)
         {
 
@@ -304,6 +321,12 @@ namespace Sort
         /// <param name="low"></param>
         /// <param name="high"></param>
         /// <returns></returns>
+        
+        /**
+         * T(n) = 2T(n/2) + O(n) Average,Best
+         * T(n) = T(n-1) + O(n) Worst
+         */
+
         public static int[] quickSort(int[] arr, int low, int high)
 
         {
@@ -345,6 +368,12 @@ namespace BinarySearch
         /// <param name="arr"></param>
         /// <param name="x"></param>
         /// <returns></returns>
+        
+        /**
+         * T(n) = 2T(n/2) + O(n) Average,Worst
+         * T(n) = T(n/2) + 1 Best
+         */
+
         public static int binarySearch(int[] arr, int x)
         {
             int min = 0;
@@ -386,6 +415,13 @@ namespace BinarySearch
         /// <param name="right"></param>
         /// <param name="x"></param>
         /// <returns></returns>
+        
+
+        /**
+        * T(n) = 2T(n/2) + O(n) Average,Worst
+        * T(n) = T(n/2) + 1 Best
+        */
+
         public static int binarySearch(int[] arr, int left, int right, int x)
         {
             if (right >= left)
@@ -673,6 +709,59 @@ namespace MatrixMultiplication
                     MainMatrix[i2, j2] = OtherMatrix[i, j];
                 }
             }
+        }
+
+    }
+}
+
+namespace MasterTheroem
+{
+    public static class MasterTheorem
+    {
+        /// <summary>
+        /// The master theorem is used to calculate the time complexity of functions based on given values. 
+        /// In this way, we can test the speed of certain scenarios.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="fnDegree"></param>
+        /// <returns></returns>
+
+        public static string TimeComplexity(int a, int b, int fnDegree)
+        {
+
+            double c = Math.Log(a, b);
+
+
+            if (a < b && fnDegree == 0)
+            {
+                return "O(" + Math.Pow(b, fnDegree) + ")";
+            }
+            else if (a < b && fnDegree == 1)
+            {
+                return "O(" + "1" + ")";
+            }
+            else if (a < b)
+            {
+                return "O(" + "n" + ")";
+            }
+            else if (a == b && fnDegree == 1)
+            {
+                return "O(" + "n" + " log n)";
+            }
+            else if (a == b)
+            {
+                return "O(" + "n" + "^" + fnDegree + " log n)";
+            }
+            else if (a > b)
+            {
+                return "O(n^" + c + ")";
+            }
+            else
+            {
+                return "Error";
+            }
+
         }
 
     }
